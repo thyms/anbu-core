@@ -10,7 +10,7 @@ test-app-ci:
 	./gradlew clean test
 
 setup-project:
-	git remote add functional01 git@heroku.com:anbu-core-func01.git
+	git remote add func01       git@heroku.com:anbu-core-func01.git
 	git remote add qa01         git@heroku.com:anbu-core-qa01.git
 	git remote add demo01       git@heroku.com:anbu-core-demo01.git
 	git remote add stage01      git@heroku.com:anbu-core-stage01.git

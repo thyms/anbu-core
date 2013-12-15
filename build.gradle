@@ -1,6 +1,5 @@
 apply plugin: "groovy"
 apply plugin: "jetty"
-apply plugin: "cargo"
 
 ext {
   projectName = "anbu-core"
@@ -23,7 +22,6 @@ dependencies {
   def versionLog4j = "1.2.16"
   def versionSpring = "3.2.2.RELEASE"
   def versionCglib = "2.2.2"
-  def versionCargo = '1.3.3'
   def versionJacksonJaxrs = "1.9.12"
   def versionServletApiJetty = "3.0.20100224"
   def versionSpringJade4j = "0.3.2"
@@ -48,9 +46,6 @@ dependencies {
 
   providedCompile "org.mortbay.jetty:servlet-api:$versionServletApiJetty"
 
-  cargo "org.codehaus.cargo:cargo-core-uberjar:$versionCargo",
-    "org.codehaus.cargo:cargo-ant:$versionCargo"
-
   runtimeOnly "org.mortbay.jetty:jetty-runner:8.1.1.v20120215"
 }
 
@@ -65,26 +60,6 @@ buildscript {
   repositories {
     mavenCentral()
     mavenLocal()
-  }
-
-  dependencies {
-    classpath "org.gradle.api.plugins:gradle-cargo-plugin:0.5.8"
-  }
-}
-
-cargo {
-  containerId = "tomcat6x"
-  port = 8080
-
-  deployable {
-    file = file("anbu-core.war")
-    context = "anbu-core"
-  }
-
-  remote {
-    hostname = "anbu.functional01.core.dk.com"
-    username = "admin"
-    password = "admin123"
   }
 }
 
